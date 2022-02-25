@@ -43,5 +43,5 @@ console.log(removeNthFromEnd(head1, n1));
 console.log(removeNthFromEnd(head2, n2));
 console.log(removeNthFromEnd(head3, n3));
 
-//Time complexity is: O(1) since no loops where used.
+//Time complexity is: O(n) since the spread operator iterates on each item of the array where used.
 //Space complexity is: O(n) since there is an assignment which grows as the input grows.
