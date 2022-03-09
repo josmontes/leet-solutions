@@ -43,6 +43,24 @@ const sol2 = [
  * @param {number[]} newInterval
  * @return {number[][]}
  */
- function insert (intervals, newInterval) {
-    
-};
+function insert(intervals, newInterval) {
+  let newIntervals = [...intervals, newInterval];
+  newIntervals.sort((a, b) => a[0] - b[0]);
+  const merged = [newIntervals[0]];
+  for (let curr of newIntervals) {
+    prev = merged[merged.length - 1];
+    if (prev[1] >= curr[0]) {
+      prev[1] = Math.max(curr[1], prev[1]);
+    } else {
+      merged.push(curr);
+    }
+  }
+  return merged;
+}
+
+//Log results
+console.log(insert(intervals1, newInterval1));
+console.log(insert(intervals2, newInterval2));
+
+//Time complexity is: O(n) since there are no nested loops inside the function.
+//Space complexity is: O(n) since many variables are dependent on the size of the input.
