@@ -41,15 +41,87 @@ const sol3 = [];
  * @param {ListNode[]} lists
  * @return {ListNode}
  */
+
+class LinkNode {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
+}
+
+class LinkList {
+  constructor(head) {
+    this.head = head;
+  }
+
+  clear() {
+    this.head = null;
+  }
+
+  getFirst() {
+    return this.head;
+  }
+
+  getLast() {
+    let lastNode = this.head;
+    if (lastNode)
+      while (lastNode) {
+        lastNode = lastNode.next;
+      }
+    return lastNode;
+  }
+
+  size() {
+    let node = this.head;
+    let size = 0;
+    if (node)
+      while (node) {
+        size++;
+        node = node.next;
+      }
+    return size;
+  }
+
+  genLinks(nodes) {
+    let node = this.head;
+    let i = 0;
+    if (nodes.length === 0) return this;
+    if (!node) {
+      this.head = new LinkNode(nodes[0]);
+      node = this.head;
+      i++;
+    }
+    while (node && i < nodes.length) {
+      node.next = new LinkNode(nodes[i]);
+      node = node.next;
+      i++;
+    }
+    return this;
+  }
+
+  printList() {
+    let node = this.head;
+    let string = "";
+    if (node)
+      while (node) {
+        string += `${node.val}${node.next ? " -> " : ""}`;
+        node = node.next;
+      }
+    return string;
+  }
+}
+
 var mergeKLists = function (lists) {
   if (lists.length > 0) {
     let merged = [];
     for (const list of lists) {
-      merged.concat(list);
+      merged = merged.concat(list);
     }
-    return merged.sort((a, b) => a - b);
+    merged.sort((a, b) => a - b);
+    let linked = new LinkList().genLinks(merged).printList();
+    return linked;
   }
-  return lists;
+  return new LinkList().genLinks(lists).printList();
 };
 
 //Log results

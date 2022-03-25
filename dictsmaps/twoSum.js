@@ -38,8 +38,6 @@ function twoSum(nums, target) {
       visited.set(value, index);
     }
   }
-
-  return indexes;
 }
 
 //Log results

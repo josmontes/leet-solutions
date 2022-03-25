@@ -24,7 +24,7 @@ function maxMin(k, arr) {
   for (let i = 0; i <= arr.length - k; i++) {
     let localUnfair = arr[i + k - 1] - arr[i];
     if (!minUnfair) minUnfair = localUnfair;
-    else if (minUnfair > localUnfair) minUnfair = localUnfair;
+    if (minUnfair > localUnfair) minUnfair = localUnfair;
   }
   return minUnfair;
 }

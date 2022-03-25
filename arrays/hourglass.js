@@ -25,11 +25,11 @@ function hourglassSum(arr) {
     for (let j = 1; j < 5; j++) {
       let hourglass =
         arr[i - 1][j - 1] +
-        arr[i][j] +
-        arr[i + 1][j + 1] +
         arr[i - 1][j + 1] +
-        arr[i + 1][j - 1] +
         arr[i - 1][j] +
+        arr[i][j] +
+        arr[i + 1][j - 1] +
+        arr[i + 1][j + 1] +
         arr[i + 1][j];
       max = Math.max(max, hourglass);
     }

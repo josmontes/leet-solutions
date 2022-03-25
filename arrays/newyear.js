@@ -17,10 +17,11 @@ function minimumBribes(q) {
   let bribeCount = 0;
   //Loop through q check order and bribe count
   for (let i = 0; i < q.length; i++) {
-      if (q[i] - (i + 1) > 2) return "Too chaotic";
-      //Check from 2 to the front of initial position to current (for index 1 and 0 it would be 0)
-      for (let j = Math.max(0, q[i] - 2); j < i; j++)
-          if (q[j] > q[i]) bribeCount++;
+    // Its + 1 since val = i + 1
+    if (q[i] - (i + 1) > 2) return "Too chaotic";
+    //Check from 2 to the front of initial position to current (for index 1 and 0 it would be 0) only 2 because more = chaos.
+    for (let j = Math.max(0, q[i] - 2); j < i; j++)
+      if (q[j] > q[i]) bribeCount++;
   }
   return bribeCount;
 }

@@ -33,14 +33,15 @@ function canJump(nums) {
   let i = 0;
   let max = 0;
   let target = nums.length - 1;
+  //Same as a for loop
   while (i < nums.length) {
-    //Assign what is bigger, previous maxJump vs current maxJump
+    //Assign what is bigger, previous maxJump vs current maxJump (index + its value)
     max = Math.max(max, i + nums[i]);
     //If maxJump is bigger or equal to target
     if (max >= target) {
       return true;
     }
-    //If we arrive to a 0 value no matter what
+    //If we arrived to a 0 value and we can't jump forward
     if (max <= i && nums[i] === 0) {
       return false;
     }

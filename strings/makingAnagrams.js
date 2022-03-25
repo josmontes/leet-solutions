@@ -28,5 +28,6 @@ function makeAnagram(a, b) {
     dict = {};
   for (let ch of a) dict[ch] = 1 + (dict[ch] || 0);
   for (let ch of b) dict[ch] ? dict[ch]-- : count++;
+  // We are returning the diference between the lengths of the ending strings + count of deletions (*2 because we delete from both strings)
   return 2 * count + a.length - b.length;
 }

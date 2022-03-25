@@ -14,6 +14,7 @@ function getMinimumCost(k, c) {
   let price = 0;
   let prevPurchases = 1;
   let friends = k;
+  //Could also be done with a map of friends and count each time he buys a flower.
   //Sort
   c.sort((a, b) => a - b);
   //Loop while there are flowers;

@@ -18,9 +18,9 @@ competing in all the preliminary contests? This value may be negative.
  *  2. 2D_INTEGER_ARRAY contests
  */
 function luckBalance(k, contests) {
-  //Sort by points
   let losing = [];
   let sum = 0;
+  //Sort by points
   contests.sort((a, b) => b[0] - a[0]);
   for (let i = 0; i < contests.length; i++) {
     if (losing.length < k && contests[i][1] === 1) {

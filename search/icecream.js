@@ -18,8 +18,10 @@ You must print the smaller ID first and the larger ID second.
  *  2. INTEGER money
  */
 function whatFlavors(cost, money) {
-  for (let i = 0, map = new Map(); i < cost.length - 1; i++) {
+  let map = new Map();
+  for (let i = 0; i < cost.length - 1; i++) {
     let target = money - cost[i];
+    //Use + 1 since icecreams IDs start with 1
     if (map.has(target)) return `${map.get(target)} ${i + 1}`;
     map.set(cost[i], i + 1);
   }

@@ -5,6 +5,7 @@ such that the elements at those indices are in geometric progression for a given
 
 function countTriplets(arr, r) {
   let count = 0;
+  //Could be done with objects too
   var dict1 = new Map();
   var dict2 = new Map();
   arr.forEach((i) => {

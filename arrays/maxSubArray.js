@@ -28,10 +28,13 @@ const sol3 = 23;
  * @return {number}
  */
 function maxSubArray(nums) {
+  //Initialize the sum of the subArr and the max sum;
   let subSum = nums[0];
   let max = nums[0];
   for (let i = 1; i < nums.length; i++) {
+    //Store the max value between the sum of the previous subArr and the current value
     subSum = Math.max(subSum + nums[i], nums[i]);
+    //Update the max value between last result and max sum overall
     max = Math.max(subSum, max);
   }
   return max;

@@ -44,14 +44,19 @@ const sol2 = [
  * @return {number[][]}
  */
 function insert(intervals, newInterval) {
-  let newIntervals = [...intervals, newInterval];
+  let newIntervals = intervals.concat([newInterval]);
+  //Sort new array to get the newInterval in its place
   newIntervals.sort((a, b) => a[0] - b[0]);
+  //Initialize new array of merged intervals
   const merged = [newIntervals[0]];
   for (let curr of newIntervals) {
+    //Get the last interval inserted
     prev = merged[merged.length - 1];
     if (prev[1] >= curr[0]) {
+      //If the secondVal of prev is bigger or equal than the first val of curr, get the maximum and update prev interval
       prev[1] = Math.max(curr[1], prev[1]);
     } else {
+      //Else we just add the current interval since no overlapping occurs
       merged.push(curr);
     }
   }

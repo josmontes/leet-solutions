@@ -13,6 +13,7 @@ Given two strings, determine if they share a common substring. A substring may b
 
 function twoStrings(s1, s2) {
   let letterMap = new Map();
+  //Could use a set also
   for (const char of s1) {
     if (!letterMap.has(char)) letterMap.set(char, 0);
   }

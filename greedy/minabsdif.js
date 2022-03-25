@@ -6,6 +6,7 @@ Given an array of integers, find the minimum absolute difference between any two
 function minimumAbsoluteDifference(arr) {
   //Sort abs array
   arr.sort((a,b) => Math.abs(a) - Math.abs(b));
+  //Initialize min dif
   let minDiff = Math.abs(arr[1] - arr[0]);
   for (let i = 2; i < arr.length; i++) {
       let localDiff = Math.abs(arr[i] - arr[i-1]);

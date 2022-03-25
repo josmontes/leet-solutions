@@ -1,20 +1,25 @@
 function itemsInContainers(s, startIndices, endIndices) {
   let len = s.length;
+  //the count of stars contained from left to right at each given index
   let starsCount = Array(len).fill(0);
-  //Initialize and check for edge cases
+  //list of index of the last left pole at each given index
   let leftIndex = Array(len).fill(-1);
-  if (s.charAt(0) === "|") leftIndex[0] = 0;
+  //list of index of the last right pole at each given index
   let rightIndex = Array(len).fill(-1);
+  //Edge cases
+  if (s.charAt(0) === "|") leftIndex[0] = 0;
   if (s.charAt(len - 1) === "|") rightIndex[len - 1] = 0;
   let count = 0;
   for (let i = 1; i < len; i++) {
     //Find the last pole from left to right and count stars between poles
     if (s.charAt(i) === "|") {
       leftIndex[i] = i;
+      //If there is a pole to the left of this one, log the count
       if (leftIndex[i - 1] !== -1) {
         starsCount[i] = count;
       }
     } else {
+      //Left pole is the same for this one as the last index, increment count of stars
       leftIndex[i] = leftIndex[i - 1];
       if (leftIndex[i] !== -1) count++;
     }
@@ -33,12 +38,12 @@ function itemsInContainers(s, startIndices, endIndices) {
       ei = endIndices[j] - 1;
     //Left pole is the first pole to the right of the startIndex
     let left = rightIndex[si],
-    //right pole is the first pole to the left of the endIndex
+      //right pole is the first pole to the left of the endIndex
       right = leftIndex[ei];
     let result =
       //if no left or right pole, no items are contained.
       //else substract count of items to the left of the range.
-      left !== -1 && right !== -1 ? starsCount[right] - starsCount[left] : 0;
+      left === -1 || right === -1 ? 0 : starsCount[right] - starsCount[left];
     ans.push(result);
   }
   return ans;

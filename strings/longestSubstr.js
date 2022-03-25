@@ -24,6 +24,7 @@ const solution3 = 3;
  */
  function lengthLongestSubstr (s) {
     let max = 0;
+    //Do it with map instead of string and then get the entries and join
     let unrepeated = "";
     for (let i = 0; i < s.length; i++) {
         if (unrepeated.includes(s[i])) {

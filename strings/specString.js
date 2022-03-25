@@ -19,6 +19,7 @@ function substrCount(n, s) {
       i = nextIndex;
     } else {
       let step = 1;
+      
       while (s[i + step] === s[i - step] && s[i + step] === s[i + 1]) {
         step++;
         count++;

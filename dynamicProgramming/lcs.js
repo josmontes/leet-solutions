@@ -6,7 +6,9 @@
 function lcs(str1, str2) {
   let x = str1.length,
     y = str2.length;
-  let solMatrix = Array(x + 1).fill(Array(y + 1));
+  let solMatrix = Array(x + 1)
+    .fill()
+    .map(() => Array(y + 1).fill(0));
   for (let i = 0; i <= x; i++) {
     for (let j = 0; j <= y; j++) {
       if (i === 0 || j === 0) solMatrix[i][j] = 0;
@@ -15,7 +17,6 @@ function lcs(str1, str2) {
       else solMatrix[i][j] = Math.max(solMatrix[i - 1][j], solMatrix[i][j - 1]);
     }
   }
-  console.log(solMatrix);
   return solMatrix[x][y];
 }
 

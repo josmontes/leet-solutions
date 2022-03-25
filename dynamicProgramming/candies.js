@@ -19,9 +19,11 @@ function candies(n, arr) {
   //Edge cases
   if (arr[0] > arr[1]) candies[0]++;
   if (arr[n - 1] > arr[n - 2]) candies[n - 1]++;
+  //From left to right to get up trend
   for (let i = 1; i < n; i++) {
     if (arr[i] > arr[i - 1]) candies[i] = candies[i - 1] + 1;
   }
+  //From right to left in case of inversed trend
   for (let j = n - 2; j >= 0; j--) {
     if (arr[j] > arr[j + 1] && candies[j] <= candies[j + 1])
       candies[j] = candies[j + 1] + 1;

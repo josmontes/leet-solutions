@@ -3,13 +3,13 @@ The height of a binary tree is the number of edges between the tree's root and i
  */
 
 class Node {
+  // this is a node of the tree , which contains info as data, left , right
   constructor(info) {
     this.info = info;
     this.left = null;
     this.right = null;
   }
 }
-// this is a node of the tree , which contains info as data, left , right
 function getHeight(root) {
   let left_height = 0,
     right_height = 0;

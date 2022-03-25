@@ -40,13 +40,17 @@ const sol2 = [[1, 5]];
  * @return {number[][]}
  */
 function merge(intervals) {
+  //As always we sort the array just in case *If it is stated that the array is already sorted, ignore.
   intervals.sort((a, b) => a[0] - b[0]);
+  //Initialize result
   const merged = [intervals[0]];
   for (let curr of intervals) {
     prev = merged[merged.length - 1];
+    //Compare prev with curr and update prevInterval if needed
     if (prev[1] >= curr[0]) {
       prev[1] = Math.max(curr[1], prev[1]);
     } else {
+      //Insert curr if no overlapping occurs
       merged.push(curr);
     }
   }
