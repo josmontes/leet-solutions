@@ -45,9 +45,9 @@ var mergeKLists = function (lists) {
   if (lists.length > 0) {
     let merged = [];
     for (const list of lists) {
-      merged.push(...list);
+      merged.concat(list);
     }
-    return merged.sort();
+    return merged.sort((a, b) => a - b);
   }
   return lists;
 };
@@ -57,5 +57,5 @@ console.log(mergeKLists(lists1));
 console.log(mergeKLists(lists2));
 console.log(mergeKLists(lists3));
 
-//Time complexity is: O(n^2) since there is a for loop and inside it a spread operator.
+//Time complexity is: O(n)
 //Space complexity is: O(n) since there is an array that grows dependent on the input size.

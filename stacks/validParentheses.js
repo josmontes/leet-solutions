@@ -19,33 +19,32 @@ const sol3 = false;
  * @param {string} s
  * @return {boolean}
  */
-function isValid(s) {
-  //If s is not even return false
-  if (s.length % 2 !== 0) return false;
-  //Store open bracket and close it with matching pair
-  const stack = [];
-  for (let i = 0; i < s.length; i++) {
-    let c = s.charAt(i);
-    //Add matching bracket to the stack, if c is a closing bracket, check if it's the same if not return false
-    switch (c) {
-      case "(":
-        stack.push(")");
+function isBalanced(s) {
+  // Write your code here
+  //If string starts with an ending bracket exit
+  if (["}", "]", ")"].includes(s[0])) return "NO";
+  //Add first char to openBrackets array
+  let openBrackets = [s[0]];
+  //Loop through all string length
+  for (let i = 1; i < s.length; i++) {
+    //Compare curr value against last value of the openBrackets array
+    switch (s[i]) {
+      case "}":
+        if (openBrackets.pop() !== "{") return "NO";
         break;
-      case "[":
-        stack.push("]");
+      case "]":
+        if (openBrackets.pop() !== "[") return "NO";
         break;
-      case "{":
-        stack.push("}");
+      case ")":
+        if (openBrackets.pop !== "(") return "NO";
         break;
-
       default:
-        if (c !== stack.pop()) {
-          return false;
-        }
+        openBrackets.push(s[i]);
     }
   }
-  //If any are still open return false else true
-  return stack.length === 0;
+  //If openBrackets is not empty, it means that there were more open brackets than closing ones
+  if (openBrackets.length > 0) return "NO";
+  else return "YES";
 }
 
 //Log results and check if correct
