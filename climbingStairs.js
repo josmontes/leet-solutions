@@ -36,7 +36,9 @@ const n3 = 4,
  */
 function climbStairs(n) {
   let a = (b = 1);
-  while (n--) a = (b += a) - a;
+  while (n--) {
+    a = (b += a) - a;
+  }
   return a;
 }
 
